@@ -1,4 +1,4 @@
-#Queries
+# Pinot Queries
 
 ## Reddit place
 
