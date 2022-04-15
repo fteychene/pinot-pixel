@@ -1,0 +1,25 @@
+{
+  "tableName": "redditPlace",
+  "tableType": "OFFLINE",
+  "segmentsConfig": {
+    "replication": 1
+  },
+  "tenants": {
+    "broker":"DefaultTenant",
+    "server":"DefaultTenant"
+  },
+  "tableIndexConfig": {
+    "loadMode": "MMAP"
+  },
+  "nullHandlingEnabled": true,
+  "ingestionConfig": {
+    "batchIngestionConfig": {
+      "segmentIngestionType": "APPEND",
+      "segmentIngestionFrequency": "DAILY"
+    },
+    "transformConfigs": [
+      {"columnName": "time", "transformFunction": "FromDateTime(\"timestamp\", 'yyyy-MM-dd HH:mm:ss.SSS z')" }
+    ]
+  },
+  "metadata": {}
+}

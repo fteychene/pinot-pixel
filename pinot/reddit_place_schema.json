@@ -1,0 +1,32 @@
+{
+  "schemaName": "redditPlace",
+  "dimensionFieldSpecs": [
+    {
+      "name": "user_id",
+      "dataType": "STRING",
+      "defaultNullValue": ""
+    },
+    {
+      "name": "pixel_color",
+      "dataType": "STRING",
+      "defaultNullValue": ""
+    },
+    {
+      "name": "x",
+      "dataType": "INT"
+    },
+    {
+      "name": "y",
+      "dataType": "INT"
+    }
+  ],
+  "metricFieldSpecs": [],
+  "dateTimeFieldSpecs": [
+    {
+      "name": "time",
+      "dataType": "TIMESTAMP",
+      "format": "1:MILLISECONDS:EPOCH",
+      "granularity": "1:MILLISECONDS"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "schemaName": "pixelUpdate",
+  "dimensionFieldSpecs": [
+    {
+      "name": "user",
+      "dataType": "STRING",
+      "defaultNullValue": ""
+    },
+    {
+      "name": "color",
+      "dataType": "STRING",
+      "defaultNullValue": ""
+    },
+    {
+      "name": "x",
+      "dataType": "INT"
+    },
+    {
+      "name": "y",
+      "dataType": "INT"
+    }
+  ],
+  "metricFieldSpecs": [],
+  "dateTimeFieldSpecs": [
+    {
+      "name": "time",
+      "dataType": "TIMESTAMP",
+      "format": "1:MILLISECONDS:TIMESTAMP",
+      "granularity": "1:MILLISECONDS"
+    }
+  ]
+}
