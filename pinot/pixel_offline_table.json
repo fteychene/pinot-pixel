@@ -1,0 +1,28 @@
+{
+  "tableName": "pixelEvent",
+  "tableType": "OFFLINE",
+  "segmentsConfig": {
+    "timeColumnName": "time",
+    "timeType": "MILLISECONDS",
+    "retentionTimeUnit": "DAYS",
+    "retentionTimeValue": "60",
+    "schemaName": "pixelUpdate",
+    "replication": "1",
+    "replicasPerPartition": "1"
+  },
+  "tenants": {
+    "broker":"DefaultTenant",
+    "server":"DefaultTenant"
+  },
+  "tableIndexConfig": {
+    "loadMode": "MMAP"
+  },
+  "nullHandlingEnabled": true,
+  "ingestionConfig": {
+    "batchIngestionConfig": {
+      "segmentIngestionType": "APPEND",
+      "segmentIngestionFrequency": "DAILY"
+    }
+  },
+  "metadata": {}
+}

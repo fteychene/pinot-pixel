@@ -39,6 +39,16 @@ group by user_id
 order by updated desc
 ```
 
+Get last update for each coordinate
+```sql
+select x, y, ToDateTime(max("time"), 'yyyy-MM-dd HH:mm:ss.SSS'), LASTWITHTIME(user_id, "time", 'STRING'), LASTWITHTIME(pixel_color, "time", 'STRING')
+from redditPlace
+where x > 0 and x <= 250 and y >= 1470 and y <= 1970
+group by x, y
+order by x, y
+limit 10
+```
+
 ## Realtime pixel canvas
 
 Most active player :
@@ -51,3 +61,11 @@ Color sent by player :
 select user, color, count(*) as counter from pixelEvent group by user, color order by counter
 ```
 
+Get last update for each coordinate
+```sql
+select x, y, ToDateTime(max("time"), 'yyyy-MM-dd HH:mm:ss.SSS'), LASTWITHTIME(user, "time", 'STRING'), LASTWITHTIME(color, "time", 'STRING')
+from pixelEvent
+group by x, y
+order by x, y
+limit 250
+```

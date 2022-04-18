@@ -23,8 +23,10 @@ dependencies {
     implementation("io.arrow-kt:arrow-fx-stm")
     implementation("org.apache.kafka:kafka-clients:3.1.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1")
-    runtimeOnly("org.slf4j:slf4j-api:1.7.35")
-    runtimeOnly("ch.qos.logback:logback-classic:1.2.10")
+    runtimeOnly("org.slf4j:slf4j-api:1.7.36")
+    runtimeOnly("ch.qos.logback:logback-classic:1.2.11")
+    implementation("org.apache.pinot:pinot-java-client:0.10.0")
+    implementation("com.google.guava:guava:31.1-jre")
 }
 
 tasks.getByName<Test>("test") {
