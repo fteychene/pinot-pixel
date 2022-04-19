@@ -15,10 +15,10 @@ docker run \
     --rm \
     --network=pixelcanvas_default \
     --name pinot-streaming-table-creation \
-    -v (pwd):/tmp/gh \
+    -v (pwd):/tmp/demo \
     apachepinot/pinot:0.10.0 AddTable \
-    -schemaFile /tmp/gh/schema.json \
-    -tableConfigFile /tmp/gh/table.json \
+    -schemaFile /tmp/demo/pinot//gh_event_schema.json \
+    -tableConfigFile /tmp/demo/pinot//gh_event_table.json \
     -controllerHost pinot-controller \
     -controllerPort 9000 \
     -exec
@@ -26,9 +26,9 @@ docker run \
 docker run --rm -ti \
     --network=pixelcanvas_default \
     --name pinot-github-events-into-kafka \
-    -v (pwd):/tmp/gh \
+    -v (pwd):/tmp/demo \
     -d apachepinot/pinot:0.10.0 StreamGitHubEvents \
-    -schemaFile /tmp/gh/schema.json \
+    -schemaFile /tmp/demo/pinot/gh_event_schema.json \
     -topic pullRequestMergedEvents \
     -personalAccessToken $GH_TOKEN \
     -kafkaBrokerList kafka:9092
