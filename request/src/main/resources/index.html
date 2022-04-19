@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Pixel canvas</h1>
+<button value="Start" onclick="startStream()">Start</button>
+
+<div>
+<canvas id="monalisa" width="500" height="500">
+</canvas>
+</div>
+
+<script>
+    const canvas = document.getElementById("monalisa");
+    const ctx = canvas.getContext('2d');
+
+    const width = canvas.width;
+    const height = canvas.height;
+
+    const imgData = ctx.createImageData(width, height);
+
+    function startStream() {
+        let pixels = new EventSource("/stream");
+        pixels.onmessage = function (event) {
+            let data = JSON.parse(event.data)
+            setPixel(data.pixel)
+        }
+        pixels.onerror = function (event) {
+            console.log("SSE onerror " + event);
+        }
+        pixels.onopen = function () {
+            console.log("SSE onopen");
+        }
+    }
+
+    function setPixel(pixel) {
+        ctx.fillStyle = pixel.color;
+        ctx.fillRect(pixel.x*5, pixel.y*5, 5, 5);
+        ctx.fill()
+    }
+
+</script>
+
+</body>
+</html>

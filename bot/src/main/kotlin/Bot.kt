@@ -29,15 +29,15 @@ fun main() = runBlocking {
         HexColor("#0000ff")
     )
 
-    val x = 50
-    val y = 50
+    val x = 100
+    val y = 100
 
     for (id in 0..10) {
         launch(Dispatchers.Default) {
             val client: HttpHandler = JavaHttpClient()
             println("Started bot $id")
             val botId = "bot-$id"
-            for (i in 1..1000000) {
+            for (i in 1..100000) {
                 val request = Request(Method.PUT, "http://localhost:8080/colorize").with(
                     colorizeLens.of(
                         ColorPixel(
@@ -50,6 +50,7 @@ fun main() = runBlocking {
                 )
                 client(request)
             }
+            println("Ending bot $id")
         }
     }
 

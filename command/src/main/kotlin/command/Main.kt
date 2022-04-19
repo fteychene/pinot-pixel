@@ -35,7 +35,7 @@ data class ColorPixel(
     val user: String
 )
 
-val SIZE = 50
+val SIZE = 100
 
 fun main() {
 

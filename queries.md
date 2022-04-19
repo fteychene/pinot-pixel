@@ -1,5 +1,11 @@
 # Pinot Queries
 
+## Github Merged Events
+
+```sql
+select numComments, count(*), SUM(numLinesAdded), SUM(numLinesDeleted), SUM(numFilesChanged) from pullRequestMergedEvents group by numComments
+```
+
 ## Reddit place
 
 Number of pixel changed in French flag disputed area
