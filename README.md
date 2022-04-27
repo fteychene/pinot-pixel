@@ -38,4 +38,3 @@ and a Bot project that will send some pixel art to the system or generate random
 
  - [Docker-compose stack](docker-compose.yaml)
  - [Pinot table configuration](pinot)
- - [Queries](queries.md)
