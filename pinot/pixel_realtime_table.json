@@ -13,11 +13,6 @@
   "tenants": {},
   "tableIndexConfig": {
     "loadMode": "MMAP",
-    "invertedIndexColumns": [
-      "user",
-      "x",
-      "y"
-    ],
     "streamConfigs": {
       "streamType": "kafka",
       "stream.kafka.consumer.type": "simple",

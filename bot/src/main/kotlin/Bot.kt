@@ -9,6 +9,7 @@ import org.http4k.core.Request
 import org.http4k.core.with
 import org.http4k.format.Gson.auto
 import java.util.UUID
+import javax.imageio.ImageIO
 import kotlin.random.Random
 
 data class ColorPixel(
@@ -18,6 +19,8 @@ data class ColorPixel(
     val user: String
 )
 
+val x = 100
+val y = 100
 val colorizeLens = Body.auto<ColorPixel>().toLens();
 
 fun main() = runBlocking {
@@ -29,15 +32,12 @@ fun main() = runBlocking {
         HexColor("#0000ff")
     )
 
-    val x = 100
-    val y = 100
-
     for (id in 0..10) {
         launch(Dispatchers.Default) {
             val client: HttpHandler = JavaHttpClient()
             println("Started bot $id")
             val botId = "bot-$id"
-            for (i in 1..100000) {
+            for (i in 1..1000000) {
                 val request = Request(Method.PUT, "http://localhost:8080/colorize").with(
                     colorizeLens.of(
                         ColorPixel(

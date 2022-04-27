@@ -5,11 +5,30 @@
     "replication": 1
   },
   "tenants": {
-    "broker":"DefaultTenant",
-    "server":"DefaultTenant"
+    "broker": "DefaultTenant",
+    "server": "DefaultTenant"
   },
   "tableIndexConfig": {
-    "loadMode": "MMAP"
+    "loadMode": "MMAP",
+    "rangeIndexColumns": [
+      "x",
+      "y"
+    ],
+    "starTreeIndexConfigs": [
+      {
+        "dimensionsSplitOrder": [
+          "user_id",
+          "pixel_color"
+        ],
+        "skipStarNodeCreationForDimensions": [
+        ],
+        "functionColumnPairs": [
+          "COUNT__pixel_color"
+        ],
+        "maxLeafRecords": 1
+      }
+    ],
+    "enableDefaultStarTree": true
   },
   "nullHandlingEnabled": true,
   "ingestionConfig": {
@@ -18,7 +37,10 @@
       "segmentIngestionFrequency": "DAILY"
     },
     "transformConfigs": [
-      {"columnName": "time", "transformFunction": "FromDateTime(\"timestamp\", 'yyyy-MM-dd HH:mm:ss.SSS z')" }
+      {
+        "columnName": "time",
+        "transformFunction": "FromDateTime(\"timestamp\", 'yyyy-MM-dd HH:mm:ss.SSS z')"
+      }
     ]
   },
   "metadata": {}
