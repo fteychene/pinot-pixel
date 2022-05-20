@@ -10,6 +10,7 @@ import javax.imageio.ImageIO
 fun <T> Sequence<T>.repeat() = sequence { while (true) yieldAll(this@repeat) }
 
 fun main() = runBlocking {
+    println("Start pixel art bot")
     val source = listOf(
         "pixel.jpg",
         "ranni.jpg",

@@ -1,0 +1,15 @@
+FROM gradle:7 as build
+
+WORKDIR /app
+
+COPY . /app
+
+RUN ["/app/gradlew", "--no-scan", "--no-daemon", "--no-watch-fs", "--no-configuration-cache", "--no-configure-on-demand", "bot:shadowJar", "-PpixelArt"]
+
+FROM openjdk:17
+
+COPY --from=build /app/bot/build/libs/bot-1.0-SNAPSHOT-all.jar /app/bot.jar
+
+CMD ["java", "-jar", "/app/bot.jar"]
+
+EXPOSE 8080

@@ -28,3 +28,32 @@ dependencies {
 tasks.getByName<Test>("test") {
     useJUnitPlatform()
 }
+
+if (project.hasProperty("pixelArt")) {
+    project.setProperty("mainClassName", "PixelArtKt")
+} else {
+    project.setProperty("mainClassName", "BotKt")
+}
+
+
+
+jib {
+    from {
+        image = "openjdk:17-slim-buster"
+    }
+    to {
+        image = "fteychene/pixelcanvas-bot"
+        tags = setOf(project.version as String, "latest")
+    }
+    container {
+        mainClass = "BotKt"
+        ports = listOf("8080")
+        format = com.google.cloud.tools.jib.api.buildplan.ImageFormat.OCI
+        jvmFlags = listOf(
+            "-XX:+UseContainerSupport",
+            "-XX:MinRAMPercentage=50",
+            "-XX:MaxRAMPercentage=80"
+        )
+    }
+}
+
