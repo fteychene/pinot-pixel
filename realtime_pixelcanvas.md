@@ -36,11 +36,11 @@ docker run \
     -exec
 ```
 
-:warning: This part is not yet runnable through cli only and is ATM ran through an IDE.
+Start command server (http server that receive bot commands and ingest them in Kafka) :
+`./gradlew :command:runShadow`
 
- - Start the command server (`Main.kt` in `command` project)
- - Start the request server (`Main.kt` in `request` project)
-
+Start request server (http server to display events from kafka in a pixel canvas with sse) ;
+`./gradlew :request:runShadow`
 
 Open http://localhost:8081/index.html and click on the Start button.
 You should see connection to kafka from request logs
@@ -49,12 +49,14 @@ You should see connection to kafka from request logs
 
 ## Pixel art
 
-Now start the pixel art bot (`PixelArt.kt` in `bot` project) to send some images to be displayed.
+Now start the pixel art bot to send some images to be displayed.
+`./gradlew :bot:runShadow -PpixelArt`
 They should be displayed on your front end
 
-## Bot
+## Spam bot
 
-Now start the pixel art bot (`Bot.kt` in `bot` project) to send some random pixel update with "high throughput"
+Now start spam bots to send some random pixel update with "high throughput" (at least as fast as you laptop can compute with kafka, pinot and everything running).
+`./gradlew :bot:runShadow`
 
 ## Query
 

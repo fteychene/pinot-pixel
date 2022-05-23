@@ -27,3 +27,5 @@ dependencies {
 tasks.getByName<Test>("test") {
     useJUnitPlatform()
 }
+
+project.setProperty("mainClassName", "command.MainKt")
