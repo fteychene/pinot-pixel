@@ -64,3 +64,8 @@ FROM pullRequestMergedEvents
 GROUP BY organization
 ORDER BY merged DESC
 ```
+
+How many events are we in ?
+```sql
+select count(*) from pullRequestMergedEvents limit 10
+```

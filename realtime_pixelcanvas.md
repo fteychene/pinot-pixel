@@ -15,7 +15,7 @@ docker run \
     -v (pwd):/tmp/demo \
     apachepinot/pinot:latest AddTable \
     -schemaFile /tmp/demo/pinot/pixel_realtime_schema.json \
-    -tableConfigFile /tmp/demo/pinot/pixel_realtime_table.json \
+    -realtimeTableConf /tmp/demo/pinot/pixel_realtime_table.json \
     -controllerHost pinot-controller \
     -controllerPort 9000 \
     -exec
@@ -30,7 +30,7 @@ docker run \
     -v (pwd):/tmp/demo \
     apachepinot/pinot:latest AddTable \
     -schemaFile /tmp/demo/pinot/pixel_realtime_schema.json \
-    -tableConfigFile /tmp/demo/pinot/pixel_offline_table.json \
+    -offlineTableConfigFile /tmp/demo/pinot/pixel_offline_table.json \
     -controllerHost pinot-controller \
     -controllerPort 9000 \
     -exec
@@ -79,6 +79,14 @@ from pixelEvent
 group by x, y
 order by x, y
 limit 250
+```
+
+Get hybrid
+```sql
+select * 
+from pixelEvent
+where "time" <= 1650124000000 
+limit 10
 ```
 
 ## Application integration
