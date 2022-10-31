@@ -101,5 +101,5 @@ from redditPlace
 where x > 0 and x <= 250 and y >= 1470 and y <= 1970
 group by x, y
 order by x, y
-limit 10
+limit 125000
 ```
