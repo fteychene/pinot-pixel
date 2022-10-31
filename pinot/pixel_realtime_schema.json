@@ -1,5 +1,5 @@
 {
-  "schemaName": "pixelUpdate",
+  "schemaName": "pixelEvent",
   "dimensionFieldSpecs": [
     {
       "name": "user",

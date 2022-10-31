@@ -6,11 +6,14 @@
     "timeType": "MILLISECONDS",
     "retentionTimeUnit": "DAYS",
     "retentionTimeValue": "60",
-    "schemaName": "pixelUpdate",
+    "schemaName": "pixelEvent",
     "replication": "1",
     "replicasPerPartition": "1"
   },
-  "tenants": {},
+  "tenants": {
+    "broker":"DefaultTenant",
+    "server":"DefaultTenant"
+  },
   "tableIndexConfig": {
     "loadMode": "MMAP",
     "streamConfigs": {
